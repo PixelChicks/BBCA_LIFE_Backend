@@ -1,13 +1,21 @@
 package com.bbcalife.bbcalife.model;
 
+import com.bbcalife.bbcalife.enums.Provider;
+import com.bbcalife.bbcalife.enums.Role;
+import com.bbcalife.bbcalife.model.baseEntity.BaseEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.data.annotation.CreatedDate;
 //import org.springframework.data.annotation.LastModifiedDate;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
@@ -15,7 +23,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -94,8 +102,18 @@ public class User {
         this.email = email;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return "";
     }
 
     public void setPassword(String password) {
@@ -179,7 +197,6 @@ public class User {
     private String lang;
 
 
-
     // For soft deletes
     private LocalDateTime deletedAt;
 
@@ -229,4 +246,3 @@ public class User {
         return "patient".equalsIgnoreCase(role);
     }
 }
-
