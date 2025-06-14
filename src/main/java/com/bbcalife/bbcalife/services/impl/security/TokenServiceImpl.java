@@ -4,7 +4,7 @@ import com.bbcalife.bbcalife.enums.TokenType;
 import com.bbcalife.bbcalife.model.dto.auth.AuthenticationResponse;
 import com.bbcalife.bbcalife.model.dto.auth.PublicUserDTO;
 import com.bbcalife.bbcalife.model.entity.Token;
-import com.bbcalife.bbcalife.model.User;
+import com.bbcalife.bbcalife.model.entity.User;
 import com.bbcalife.bbcalife.model.entity.VerificationToken;
 import com.bbcalife.bbcalife.repository.TokenRepository;
 import com.bbcalife.bbcalife.repository.VerificationTokenRepository;

@@ -3,10 +3,8 @@ package com.bbcalife.bbcalife.model.entity;
 import com.bbcalife.bbcalife.enums.ExceptionSeverity;
 import com.bbcalife.bbcalife.exceptions.common.ApiException;
 import com.bbcalife.bbcalife.model.baseEntity.BaseEntity;
-import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
 import lombok.*;
 
 import java.util.Arrays;

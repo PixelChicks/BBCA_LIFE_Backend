@@ -1,6 +1,6 @@
 package com.bbcalife.bbcalife.controller;
 
-import com.bbcalife.bbcalife.model.City;
+import com.bbcalife.bbcalife.model.entity.City;
 import com.bbcalife.bbcalife.repository.CityRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,8 +21,7 @@ public class CityController {
 
 
     @GetMapping("/all")
-    @PreAuthorize("hasRole('patient')")
-//    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('PATIENT')")
     public ResponseEntity<List<City>> getAll() {
         List<City> list = cityRepository.findAll();
         return ResponseEntity.ok(list);

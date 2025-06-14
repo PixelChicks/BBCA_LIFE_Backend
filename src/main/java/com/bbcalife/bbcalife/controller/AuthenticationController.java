@@ -5,7 +5,7 @@ import com.bbcalife.bbcalife.filters.JwtAuthenticationFilter;
 import com.bbcalife.bbcalife.model.dto.auth.AuthenticationRequest;
 import com.bbcalife.bbcalife.model.dto.auth.AuthenticationResponse;
 import com.bbcalife.bbcalife.model.dto.auth.RegisterRequest;
-import com.bbcalife.bbcalife.model.User;
+import com.bbcalife.bbcalife.model.entity.User;
 import com.bbcalife.bbcalife.services.AuthenticationService;
 import com.bbcalife.bbcalife.services.impl.security.events.OnPasswordResetRequestEvent;
 import com.bbcalife.bbcalife.services.impl.security.events.OnRegistrationCompleteEvent;
@@ -49,8 +49,8 @@ public class AuthenticationController {
         AuthenticationResponse authenticationResponse = authenticationService.register(request);
 
         // Email verification eventually
-         User user = modelMapper.map(authenticationResponse.getUser(), User.class);
-         eventPublisher.publishEvent(new OnRegistrationCompleteEvent(user, appBaseUrl));
+        User user = modelMapper.map(authenticationResponse.getUser(), User.class);
+        eventPublisher.publishEvent(new OnRegistrationCompleteEvent(user, appBaseUrl));
 
         return ResponseEntity.ok(authenticationResponse);
     }

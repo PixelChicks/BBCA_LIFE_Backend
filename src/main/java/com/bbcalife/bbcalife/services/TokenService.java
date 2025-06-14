@@ -3,7 +3,7 @@ package com.bbcalife.bbcalife.services;
 import com.bbcalife.bbcalife.enums.TokenType;
 import com.bbcalife.bbcalife.model.dto.auth.AuthenticationResponse;
 import com.bbcalife.bbcalife.model.entity.Token;
-import com.bbcalife.bbcalife.model.User;
+import com.bbcalife.bbcalife.model.entity.User;
 
 import java.util.List;
 

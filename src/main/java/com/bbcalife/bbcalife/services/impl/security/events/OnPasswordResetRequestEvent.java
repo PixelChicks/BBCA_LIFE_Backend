@@ -1,6 +1,6 @@
 package com.bbcalife.bbcalife.services.impl.security.events;
 
-import com.bbcalife.bbcalife.model.User;
+import com.bbcalife.bbcalife.model.entity.User;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 

@@ -1,9 +1,9 @@
 package com.bbcalife.bbcalife.controller;
 
 import com.bbcalife.bbcalife.filters.JwtAuthenticationFilter;
-import com.bbcalife.bbcalife.model.User;
 import com.bbcalife.bbcalife.model.dto.auth.AdminUserDTO;
 import com.bbcalife.bbcalife.model.dto.auth.PublicUserDTO;
+import com.bbcalife.bbcalife.model.entity.User;
 import com.bbcalife.bbcalife.services.UserService;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,7 +13,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor

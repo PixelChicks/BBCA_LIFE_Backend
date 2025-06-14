@@ -1,8 +1,8 @@
 package com.bbcalife.bbcalife.config;
 
 import com.bbcalife.bbcalife.filters.JwtAuthenticationFilter;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.bbcalife.bbcalife.handlers.JwtAuthenticationEntryPoint;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

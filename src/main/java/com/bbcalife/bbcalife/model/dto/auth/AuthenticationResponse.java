@@ -1,6 +1,5 @@
 package com.bbcalife.bbcalife.model.dto.auth;
 
-import com.bbcalife.bbcalife.model.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 

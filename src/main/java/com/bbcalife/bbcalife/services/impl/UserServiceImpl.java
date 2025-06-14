@@ -10,7 +10,7 @@ import com.bbcalife.bbcalife.model.dto.auth.AdminUserDTO;
 import com.bbcalife.bbcalife.model.dto.auth.OAuth2UserInfoDTO;
 import com.bbcalife.bbcalife.model.dto.auth.PublicUserDTO;
 import com.bbcalife.bbcalife.model.dto.auth.RegisterRequest;
-import com.bbcalife.bbcalife.model.User;
+import com.bbcalife.bbcalife.model.entity.User;
 import com.bbcalife.bbcalife.repository.UserRepository;
 import com.bbcalife.bbcalife.services.UserService;
 import jakarta.validation.ConstraintViolationException;
@@ -22,7 +22,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -77,7 +76,7 @@ public class UserServiceImpl implements UserService {
             throw new AccessDeniedException();
         }
 
-        if (currentUser.getRole().equals(Role.patient)) {
+        if (currentUser.getRole().equals(Role.PATIENT)) {
             userToUpdate.setFirstName(userDTO.getFirstname());
             userToUpdate.setLastName(userDTO.getLastname());
         } else if (currentUser.getRole().equals(Role.ADMIN)) {

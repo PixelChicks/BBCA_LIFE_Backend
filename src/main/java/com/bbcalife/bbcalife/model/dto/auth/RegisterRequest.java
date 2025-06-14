@@ -15,6 +15,6 @@ public class RegisterRequest {
     private String password;
     private String name;
     private String surName;
-    private Role role = Role.patient;
+    private Role role = Role.PATIENT;
     private Provider provider = Provider.LOCAL;
 }

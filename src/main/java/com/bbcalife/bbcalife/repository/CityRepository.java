@@ -1,6 +1,6 @@
 package com.bbcalife.bbcalife.repository;
 
-import com.bbcalife.bbcalife.model.City;
+import com.bbcalife.bbcalife.model.entity.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

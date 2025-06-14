@@ -1,7 +1,7 @@
 package com.bbcalife.bbcalife.repository;
 
 import com.bbcalife.bbcalife.model.entity.Token;
-import com.bbcalife.bbcalife.model.User;
+import com.bbcalife.bbcalife.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

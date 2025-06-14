@@ -1,7 +1,6 @@
 package com.bbcalife.bbcalife.model.entity;
 
 import com.bbcalife.bbcalife.enums.TokenType;
-import com.bbcalife.bbcalife.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

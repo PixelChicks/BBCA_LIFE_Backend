@@ -1,6 +1,6 @@
 package com.bbcalife.bbcalife.services.impl.security;
 
-import com.bbcalife.bbcalife.model.User;
+import com.bbcalife.bbcalife.model.entity.User;
 import com.bbcalife.bbcalife.services.TokenService;
 import com.bbcalife.bbcalife.services.impl.security.events.OnRegistrationCompleteEvent;
 import lombok.RequiredArgsConstructor;

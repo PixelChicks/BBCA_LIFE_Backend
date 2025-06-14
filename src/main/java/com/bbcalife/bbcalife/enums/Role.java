@@ -18,38 +18,20 @@ import static com.bbcalife.bbcalife.enums.Permission.*;
 @Getter
 @RequiredArgsConstructor
 public enum Role {
-
-    patient(
-            Set.of(
-                    USER_READ,
-                    USER_UPDATE,
-                    USER_CREATE,
-                    USER_DELETE
-            )
-    ),
-    ADMIN(
-            Set.of(
-                    ADMIN_READ,
-                    ADMIN_UPDATE,
-                    ADMIN_DELETE,
-                    ADMIN_CREATE,
-                    USER_READ,
-                    USER_UPDATE,
-                    USER_CREATE,
-                    USER_DELETE
-            )
-    );
+    PATIENT(Set.of(PATIENT_READ, PATIENT_UPDATE, PATIENT_CREATE, PATIENT_DELETE)),
+    ADMIN(Set.of(ADMIN_READ, ADMIN_UPDATE, ADMIN_DELETE, ADMIN_CREATE,
+            PATIENT_READ, PATIENT_UPDATE, PATIENT_CREATE, PATIENT_DELETE)),
+    DOCTOR(Set.of(/* doctor permissions here */)),
+    ASSISTANT(Set.of(/* assistant permissions here */));
 
     private final Set<Permission> permissions;
 
     public List<SimpleGrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> authorities = getPermissions()
-                .stream()
-                .map(permission -> new SimpleGrantedAuthority(permission.getPermission()))
+        List<SimpleGrantedAuthority> authorities = permissions.stream()
+                .map(p -> new SimpleGrantedAuthority(p.getPermission()))
                 .collect(Collectors.toList());
 
-        authorities.add(new SimpleGrantedAuthority("ROLE_" + this.name()));
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + this.name().toUpperCase()));
         return authorities;
     }
 }
-

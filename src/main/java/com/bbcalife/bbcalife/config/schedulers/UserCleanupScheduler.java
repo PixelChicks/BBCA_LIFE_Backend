@@ -1,6 +1,6 @@
 //package com.bbcalife.bbcalife.config.schedulers;
 //
-//import com.bbcalife.bbcalife.model.User;
+//import com.bbcalife.bbcalife.model.entity.User;
 //import com.bbcalife.bbcalife.model.entity.Token;
 //import com.bbcalife.bbcalife.model.entity.VerificationToken;
 //import com.bbcalife.bbcalife.repository.TokenRepository;

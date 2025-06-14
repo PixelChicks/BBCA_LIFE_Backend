@@ -1,6 +1,6 @@
 package com.bbcalife.bbcalife.repository;
 
-import com.bbcalife.bbcalife.model.User;
+import com.bbcalife.bbcalife.model.entity.User;
 import com.bbcalife.bbcalife.model.entity.VerificationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 

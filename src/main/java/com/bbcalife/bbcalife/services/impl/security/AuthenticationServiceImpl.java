@@ -12,7 +12,7 @@ import com.bbcalife.bbcalife.model.dto.auth.AuthenticationResponse;
 import com.bbcalife.bbcalife.model.dto.auth.PublicUserDTO;
 import com.bbcalife.bbcalife.model.dto.auth.RegisterRequest;
 import com.bbcalife.bbcalife.model.entity.Token;
-import com.bbcalife.bbcalife.model.User;
+import com.bbcalife.bbcalife.model.entity.User;
 import com.bbcalife.bbcalife.model.entity.VerificationToken;
 import com.bbcalife.bbcalife.repository.UserRepository;
 import com.bbcalife.bbcalife.repository.VerificationTokenRepository;
@@ -95,6 +95,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             }
         }
 
+        System.out.println(user.getEmail());
         tokenService.revokeAllUserTokens(user);
         return tokenService.generateAuthResponse(user);
     }

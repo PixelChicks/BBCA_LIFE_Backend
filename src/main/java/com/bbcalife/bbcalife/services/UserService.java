@@ -1,13 +1,12 @@
 package com.bbcalife.bbcalife.services;
 
-import com.bbcalife.bbcalife.model.User;
 import com.bbcalife.bbcalife.model.dto.auth.AdminUserDTO;
 import com.bbcalife.bbcalife.model.dto.auth.OAuth2UserInfoDTO;
 import com.bbcalife.bbcalife.model.dto.auth.PublicUserDTO;
 import com.bbcalife.bbcalife.model.dto.auth.RegisterRequest;
+import com.bbcalife.bbcalife.model.entity.User;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface UserService {
     User createUser(RegisterRequest request);

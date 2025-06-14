@@ -1,9 +1,6 @@
 package com.bbcalife.bbcalife.model.dto.auth;
 
-import com.bbcalife.bbcalife.enums.Role;
 import lombok.*;
-
-import java.util.UUID;
 
 @Getter
 @Setter
