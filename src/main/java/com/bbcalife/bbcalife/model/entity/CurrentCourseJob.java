@@ -10,12 +10,9 @@ public class CurrentCourseJob {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Many CurrentCourseJobs belong to one CancerTherapy
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cancer_therapy_id")
     private CancerTherapy cancerTherapy;
-
-    // Getters and Setters
 
     public Long getId() {
         return id;

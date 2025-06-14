@@ -27,12 +27,9 @@ public class PatientSymptomReason {
     @Column(name = "current_day")
     private Integer currentDay;
 
-    // Relationship to PatientSymptom (Many-to-One)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_symptom_id", insertable = false, updatable = false)
     private PatientSymptom patientSymptom;
-
-    // Constructors, getters and setters
 
     public PatientSymptomReason() {
     }

@@ -22,10 +22,8 @@ public class Article {
     @Column(columnDefinition = "TEXT")
     private String description;
     private String thumbnailPicture;
-    // Note: In your Laravel model, 'category' is a string and also a relation.
-    // Here, we assume category is a foreign key relation to ArticleCategory entity.
     @ManyToOne
-    @JoinColumn(name = "category_id")  // assuming foreign key column is category_id
+    @JoinColumn(name = "category_id")
     private ArticleCategory category;
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Symptom> symptoms;

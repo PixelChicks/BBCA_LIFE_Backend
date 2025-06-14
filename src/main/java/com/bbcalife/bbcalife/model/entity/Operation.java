@@ -23,8 +23,6 @@ public class Operation {
     )
     private Set<Cancer> cancers;
 
-    // Constructors, getters, setters
-
     public Operation() {
     }
 

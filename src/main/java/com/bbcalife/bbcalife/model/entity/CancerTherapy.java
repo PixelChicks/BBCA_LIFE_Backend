@@ -14,12 +14,10 @@ public class CancerTherapy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Foreign key to Cancer
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cancer_id")
     private Cancer cancer;
 
-    // Foreign key to Therapy
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "therapy_id")
     private Therapy therapy;
@@ -42,7 +40,6 @@ public class CancerTherapy {
     @Column(name = "dose")
     private String dose;
 
-    // User who checked this therapy
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "checked_by")
     private User checkedBy;
@@ -53,7 +50,6 @@ public class CancerTherapy {
     @Column(name = "last_notification")
     private LocalDateTime lastNotification;
 
-    // Many-to-Many with Medication through patient_therapy_medications join table
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "patient_therapy_medications",
@@ -62,12 +58,6 @@ public class CancerTherapy {
     )
     private Set<Medication> medications;
 
-    // One-to-many with Event
     @OneToMany(mappedBy = "cancerTherapy", fetch = FetchType.LAZY)
     private Set<Event> events;
-
-    // Getters and Setters ...
-
-    // Add your business logic methods here (e.g. access checks) in your service layer
-
 }

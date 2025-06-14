@@ -17,7 +17,7 @@ public class Exercise implements Serializable {
     private Integer exercisesCompleted;
 
     @ManyToOne
-    @JoinColumn(name = "patient_id") // assumes there's a column named patient_id in exercises table
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
     private Integer steps;
@@ -31,13 +31,12 @@ public class Exercise implements Serializable {
     @Column(name = "updated_at")
     private java.time.LocalDateTime updatedAt;
 
-    // Store serialized byte array for exercises
     @Lob
     @Column(name = "exercises")
     private byte[] exercisesData;
 
     @Transient
-    private List<String> exercises;  // or appropriate type
+    private List<String> exercises;
 
     public List<String> getExercises() {
         if (exercises == null && exercisesData != null) {
@@ -46,7 +45,6 @@ public class Exercise implements Serializable {
                 exercises = (List<String>) ois.readObject();
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
-                // handle error or return empty list
             }
         }
         return exercises;
@@ -60,13 +58,8 @@ public class Exercise implements Serializable {
             this.exercisesData = bos.toByteArray();
         } catch (IOException e) {
             e.printStackTrace();
-            // handle error
         }
     }
-
-    // Getters and setters for other fields...
-
-    // Constructors, equals, hashCode, toString etc.
 
 }
 

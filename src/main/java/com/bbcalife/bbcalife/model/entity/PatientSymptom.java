@@ -19,16 +19,12 @@ public class PatientSymptom {
     @Column(name = "additional_info")
     private String additionalInfo;
 
-    // Relation to Symptom (One-to-One)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "symptom_id", insertable = false, updatable = false)
     private Symptom symptom;
 
-    // Relation to PatientSymptomReason (One-to-Many)
     @OneToMany(mappedBy = "patientSymptom", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<PatientSymptomReason> reasons;
-
-    // Constructors, getters and setters
 
     public PatientSymptom() {
     }

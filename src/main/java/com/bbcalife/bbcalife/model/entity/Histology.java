@@ -45,12 +45,9 @@ public class Histology {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    // ManyToOne relationship to Cancer entity
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cancer_id", insertable = false, updatable = false)
     private Cancer cancer;
-
-    // Getters and setters
 
     public Long getId() {
         return id;

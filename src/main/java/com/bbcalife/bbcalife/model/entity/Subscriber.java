@@ -10,8 +10,6 @@ public class Subscriber {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // No fields specified in PHP, so only id here
-
     public Subscriber() {
     }
 

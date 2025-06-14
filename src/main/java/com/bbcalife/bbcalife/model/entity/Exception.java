@@ -27,15 +27,12 @@ public class Exception extends BaseEntity {
     private ExceptionSeverity severity;
 
     public static Exception mapFromRuntimeException(RuntimeException runtimeException, int statusCode) {
-        // Exception Info
         String exceptionType = runtimeException.getClass().getName();
         String exceptionMessage = runtimeException.getMessage();
 
-        // Stack Trace
         StackTraceElement[] stackTrace = runtimeException.getStackTrace();
         String stackTraceString = Arrays.toString(stackTrace);
 
-        // Application Context
         String methodName = stackTrace[0].getMethodName();
         String className = stackTrace[0].getClassName();
         int lineNumber = stackTrace[0].getLineNumber();

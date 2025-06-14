@@ -5,14 +5,13 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "life_qualities")  // adjust table name as needed
+@Table(name = "life_qualities")
 public class LifeQuality {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Columns
     @Column(name = "patient_id")
     private Long patientId;
 
@@ -40,11 +39,8 @@ public class LifeQuality {
     private Boolean sexuallyActive;
     private Integer sexPleasure;
 
-    // Relationships
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id", referencedColumnName = "life_quality_id")
-    // Assuming MentalHealth has a foreign key life_quality_id
     private MentalHealth mentalHealth;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -53,11 +49,5 @@ public class LifeQuality {
 
     @OneToMany(mappedBy = "lifeQuality", fetch = FetchType.LAZY)
     private List<QuestionnaireReason> reasons;
-
-
-    // Getters and setters omitted for brevity
-
-    // You can implement equals, hashCode, toString, and constructors as needed
-
 }
 

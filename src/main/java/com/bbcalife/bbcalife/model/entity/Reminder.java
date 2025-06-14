@@ -12,7 +12,6 @@ public class Reminder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Foreign key to User
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -26,11 +25,9 @@ public class Reminder {
     @Column(name = "read_at")
     private LocalDateTime readAt;
 
-    // Constructors
     public Reminder() {
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -74,9 +71,5 @@ public class Reminder {
     public void setReadAt(LocalDateTime readAt) {
         this.readAt = readAt;
     }
-
-    // Placeholder for activity logging configuration if using a logging library
-
-    // Optional: custom getter for 'type' localization logic can be added here if needed
 }
 

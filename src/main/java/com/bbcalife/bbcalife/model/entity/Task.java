@@ -22,7 +22,6 @@ public class Task {
 
     private Boolean approved;
 
-    // Relations
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id", insertable = false, updatable = false)
     private Patient patient;

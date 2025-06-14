@@ -18,7 +18,6 @@ public class Event {
 
     private String category;
 
-    // Foreign keys
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id")
     private Patient patient;
@@ -48,16 +47,10 @@ public class Event {
     @Column(name = "patient_text")
     private String patientText;
 
-    // Soft delete column
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
-    // Getters and setters omitted for brevity
-
-    // Constructor(s)
     public Event() {
     }
-
-    // You can add methods for business logic or helper methods if needed
 }
 

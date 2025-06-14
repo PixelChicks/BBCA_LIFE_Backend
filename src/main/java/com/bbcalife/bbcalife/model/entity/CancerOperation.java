@@ -13,12 +13,10 @@ public class CancerOperation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Foreign key to Cancer
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cancer_id")
     private Cancer cancer;
 
-    // Foreign key to Operation
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "operation_id")
     private Operation operation;
@@ -26,20 +24,16 @@ public class CancerOperation {
     @Column(name = "operation_date")
     private LocalDate operationDate;
 
-    // Self-referencing parent operation
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_cancer_operation_id")
     private CancerOperation parentCancerOperation;
 
-    // User who checked this operation
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "checked_by")
     private User user;
 
     @Column(name = "checked_on")
     private LocalDateTime checkedOn;
-
-    // Getters and Setters
 
     public Long getId() {
         return id;

@@ -13,7 +13,7 @@ public class PatientFile {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "patient_id") // assumes there's a column named patient_id in exercises table
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
     private String type;
@@ -21,19 +21,15 @@ public class PatientFile {
     private String path;
 
     private String name;
-
-    // Optional: track createdAt/updatedAt fields similar to Laravel timestamps
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    // Constructors
     public PatientFile() {
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }

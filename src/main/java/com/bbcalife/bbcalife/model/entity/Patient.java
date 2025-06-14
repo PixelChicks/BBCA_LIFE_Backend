@@ -47,8 +47,6 @@ public class Patient {
 
     private LocalDate deletedAt;
 
-    // Relationships
-
     @OneToOne(mappedBy = "patient")
     private Stepper stepper;
 

@@ -19,6 +19,5 @@ public class ArticleCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Add more fields here as needed, for example:
-    // private String name;
+    // More fields...
 }

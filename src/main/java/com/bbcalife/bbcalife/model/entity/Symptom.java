@@ -23,9 +23,5 @@ public class Symptom {
     @ManyToOne
     @JoinColumn(name = "article_id")
     private Article article;
-
-    // Disabling timestamps like in PHP (no @CreatedDate, @UpdatedDate annotations)
-
-    // Placeholder for activity logging logic (you may implement with AOP, listeners, or a dedicated library)
 }
 

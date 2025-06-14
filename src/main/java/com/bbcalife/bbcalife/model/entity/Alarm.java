@@ -19,13 +19,10 @@ public class Alarm {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Foreign key to PatientTherapyMedication
     @ManyToOne
     @JoinColumn(name = "patient_therapy_medication_id", nullable = false)
     private PatientTherapyMedication patientTherapyMedication;
-
-    private String time; // Assuming time stored as String (e.g., "08:30")
-
+    private String time;
     private Boolean monday;
     private Boolean tuesday;
     private Boolean wednesday;

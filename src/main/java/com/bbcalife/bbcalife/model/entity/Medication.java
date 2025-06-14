@@ -25,7 +25,5 @@ public class Medication {
     private String intakeInfo;
 
     private String notes;
-
-    // Getters and setters omitted for brevity
 }
 

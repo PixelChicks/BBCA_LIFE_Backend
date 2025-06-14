@@ -19,7 +19,7 @@ public class MentalHealth {
     private Long lifeQualityId;
 
     private Boolean depressed;
-    private Boolean crying;           // Fixed typo "criyng" to "crying"
+    private Boolean crying;
     private Boolean insomnia;
     private Boolean weightLoss;
     private Boolean constipation;
@@ -28,7 +28,7 @@ public class MentalHealth {
     private Boolean anxious;
     private Boolean irritable;
     private Boolean dead;
-    private Boolean dissatisfaction; // Fixed typo "disatisfaction"
+    private Boolean dissatisfaction;
     private Boolean slower;
     private Boolean morning;
     private Boolean appetite;
@@ -43,19 +43,12 @@ public class MentalHealth {
     @OneToMany(mappedBy = "mentalHealth", fetch = FetchType.LAZY)
     private List<QuestionnaireReason> reasons;
 
-    // Constructors
     public MentalHealth() {
     }
-
-    // Getters and Setters
-    // ... (generate for all fields)
 
     public Long getId() {
         return id;
     }
-
-    // ... other getters and setters
-
 
     public List<QuestionnaireReason> getReasons() {
         return reasons;

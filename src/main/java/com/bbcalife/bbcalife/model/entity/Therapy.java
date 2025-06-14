@@ -26,8 +26,6 @@ public class Therapy {
     )
     private List<Medication> medications;
 
-
-    // Scopes as methods - to be used in repository/service layer
     public boolean isPreoperative() {
         return "preoperative".equalsIgnoreCase(type);
     }

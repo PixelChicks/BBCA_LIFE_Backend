@@ -37,22 +37,18 @@ public class Doctor {
     @Column(columnDefinition = "TEXT")
     private String additionalInfo;
 
-    // Foreign key to user
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    // Foreign key to assistant (nullable)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assistant_id")
     private Assistant assistant;
 
-    // Foreign key for updated_by
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "updated_by")
     private User updatedBy;
 
-    // ManyToMany relation with hospitals via doctors_hospitals table
     @ManyToMany
     @JoinTable(
             name = "doctors_hospitals",
@@ -61,7 +57,6 @@ public class Doctor {
     )
     private List<Hospital> hospitals;
 
-    // ManyToMany relation with patients via doctors_patients table with extra pivot info 'approved'
     @ManyToMany
     @JoinTable(
             name = "doctors_patients",

@@ -14,13 +14,11 @@ public class Stepper {
     private Long breastOperationId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "patient_id")  // Assuming a foreign key column 'patient_id'
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
     public Stepper() {
     }
-
-    // Getters and setters
 
     public Long getId() {
         return id;

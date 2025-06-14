@@ -21,11 +21,9 @@ public class QuestionnaireReason {
 
     private String reason;
 
-    // Constructors
     public QuestionnaireReason() {
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
