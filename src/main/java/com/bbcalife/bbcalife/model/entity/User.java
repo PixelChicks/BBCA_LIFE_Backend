@@ -60,6 +60,10 @@ public class User implements UserDetails {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @Column(name = "email_verified_at")
+    private LocalDateTime emailVerifiedAt;
+
     private LocalDateTime deletedAt;
 
     public Long getId() {

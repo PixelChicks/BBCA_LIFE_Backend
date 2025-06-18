@@ -42,7 +42,7 @@ public class PasswordResetListener implements ApplicationListener<OnPasswordRese
         tokenService.createVerificationToken(user, token);
 
         String recipientAddress = user.getEmail();
-        String subject = "Password Reset Request";
+        String subject = "Заявка за нулиране на парола в LIFE";
         String message = getEmailMessage(token, user);
 
         SimpleMailMessage email = new SimpleMailMessage();
@@ -55,16 +55,15 @@ public class PasswordResetListener implements ApplicationListener<OnPasswordRese
 
     @NotNull
     private String getEmailMessage(String token, User user) {
-        //Constructs the email message for the password reset request.
         String confirmationUrl = frontendConfig.getForgottenPasswordUrl() + "?token=" + token;
 
-        return "Dear " + user.getUsername() + ",\n\n"
-                + "A password reset request has been initiated for your account.\n"
-                + "Please click the following link to reset your password:\n"
+        return "Здравейте, " + user.getUsername() + ",\n\n"
+                + "Получихме заявка за нулиране на паролата за вашия акаунт.\n"
+                + "Моля, кликнете върху следния линк, за да нулирате паролата си:\n"
                 + confirmationUrl + "\n\n"
-                + "If you did not request this change, please ignore this email.\n\n"
-                + "Best regards,\n"
-                + "The Sample Team!";
+                + "Ако не сте изпращали такава заявка, моля игнорирайте този имейл.\n\n"
+                + "С най-добри пожелания,\n"
+                + "Екипът на LIFE!";
     }
 
     private String generateResetToken(User user) {

@@ -36,17 +36,8 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         tokenService.createVerificationToken(user, token);
 
         String recipientAddress = user.getEmail();
-        String subject = "The Sample Project Registration Confirmation";
-        String confirmationUrl = event.getAppUrl() + "auth/registrationConfirm?token=" + token;
-
-        // Construct the email message
-        String message = "Dear, " + user.getUsername() + "\n\n"
-                + "Thank you for registering with The Sample Project!\n\n"
-                + "To complete your registration, please click the following link to verify your email:\n"
-                + confirmationUrl + "\n"
-                + "If you did not create an account with us, please ignore this email.\n"
-                + "Best regards,\n"
-                + "The Sample team!";
+        String subject = "Потвърждение на регистрацията в LIFE";
+        String message = getEmailNote(event, token, user);
 
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);
@@ -54,5 +45,17 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         email.setText(message);
 
         mailSender.send(email);
+    }
+
+    private static @NotNull String getEmailNote(OnRegistrationCompleteEvent event, String token, User user) {
+        String confirmationUrl = event.getAppUrl() + "auth/registrationConfirm?token=" + token;
+
+        return "Здравейте, " + user.getUsername() + "\n\n"
+                + "Благодарим Ви, че се регистрирахте в LIFE!\n\n"
+                + "За да завършите регистрацията си, моля кликнете върху следния линк, за да потвърдите вашия имейл:\n"
+                + confirmationUrl + "\n\n"
+                + "Ако не сте създали акаунт при нас, моля игнорирайте този имейл.\n\n"
+                + "С най-добри пожелания,\n"
+                + "Екипът на LIFE!";
     }
 }

@@ -252,6 +252,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
 
         User user = verificationToken.getUser();
+        user.setEnabled(true);
+        user.setEmailVerifiedAt(LocalDateTime.now());
 
         userRepository.save(user);
         verificationTokenRepository.delete(verificationToken);
