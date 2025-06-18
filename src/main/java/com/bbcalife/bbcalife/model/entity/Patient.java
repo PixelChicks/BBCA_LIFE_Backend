@@ -9,6 +9,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -45,7 +46,12 @@ public class Patient {
     private String menstrualCycleStatus;
     private LocalDate menstrualCycleStatusChangedAt;
 
-    private LocalDate deletedAt;
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+    private LocalDateTime deletedAt;
 
     @OneToOne(mappedBy = "patient")
     private Stepper stepper;

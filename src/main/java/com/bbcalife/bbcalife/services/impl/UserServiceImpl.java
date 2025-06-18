@@ -10,8 +10,9 @@ import com.bbcalife.bbcalife.model.dto.auth.AdminUserDTO;
 import com.bbcalife.bbcalife.model.dto.auth.OAuth2UserInfoDTO;
 import com.bbcalife.bbcalife.model.dto.auth.PublicUserDTO;
 import com.bbcalife.bbcalife.model.dto.auth.RegisterRequest;
+import com.bbcalife.bbcalife.model.entity.Patient;
 import com.bbcalife.bbcalife.model.entity.User;
-import com.bbcalife.bbcalife.repository.UserRepository;
+import com.bbcalife.bbcalife.repository.*;
 import com.bbcalife.bbcalife.services.UserService;
 import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
@@ -22,12 +23,17 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+    private final PatientRepository patientRepository;
+    private final CountryRepository countryRepository;
+    private final CityRepository cityRepository;
+    private final AssistantRepository assistantRepository;
     private final ModelMapper modelMapper;
 
     /**
@@ -47,8 +53,13 @@ public class UserServiceImpl implements UserService {
 
         try {
             User user = buildUser(request);
-            user.setRole("user");
-            return userRepository.save(user);
+            user.setRole("patient");
+            User savedUser = userRepository.save(user);
+
+            Patient patient = buildPatient(request, savedUser);
+            patientRepository.save(patient);
+
+            return savedUser;
         } catch (DataIntegrityViolationException exception) {
             throw new UserCreateException(true);
         } catch (ConstraintViolationException exception) {
@@ -132,8 +143,8 @@ public class UserServiceImpl implements UserService {
             registerRequest.setProvider(oAuth2User.getProvider());
 
             if (oAuth2User.getProvider().equals(Provider.GOOGLE)) {
-                registerRequest.setName(oAuth2User.getGiven_name());
-                registerRequest.setSurName(oAuth2User.getFamily_name());
+                registerRequest.setFirstName(oAuth2User.getGiven_name());
+                registerRequest.setLastName(oAuth2User.getFamily_name());
             }
 
             user = userRepository.save(buildUser(registerRequest));
@@ -157,9 +168,16 @@ public class UserServiceImpl implements UserService {
     private User buildUser(RegisterRequest request) {
         User.UserBuilder userBuilder = User
                 .builder()
-                .firstName(request.getName())
+                .uuid(UUID.randomUUID().toString())
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .nationalIdNumber(request.getNationalIdNumber())
+                .city(cityRepository.findById(request.getCityId()).orElseThrow())
                 .email(request.getEmail())
-                .role("user");
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
+                .encrypted(false) // public data
+                .role("patient");
 
         if (request.getPassword() != null) {
             userBuilder.password(passwordEncoder.encode(request.getPassword()));
@@ -167,5 +185,18 @@ public class UserServiceImpl implements UserService {
 
         return userBuilder.build();
     }
-}
 
+    private Patient buildPatient(RegisterRequest request, User savedUser) {
+        return Patient
+                .builder()
+                .user(savedUser)
+                .country(countryRepository.findById(1L).orElseThrow())
+                .gender(request.getGender())
+                .phoneNumber(request.getPhoneNumber())
+                .birthDate(request.getBirthDate())
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
+                .assistant(assistantRepository.findById(19L).orElseThrow())
+                .build();
+    }
+}
