@@ -1,16 +1,16 @@
 package com.bbcalife.bbcalife.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "articles")
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -25,54 +25,23 @@ public class Article {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private ArticleCategory category;
+    private String visibility;
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Symptom> symptoms;
 
-    public Long getId() {
-        return id;
-    }
+    @Column(name = "sub_category")
+    private String subcategory;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private short calories;
+    private byte hours;
+    private byte minutes;
 
-    public String getTitle() {
-        return title;
-    }
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getThumbnailPicture() {
-        return thumbnailPicture;
-    }
-
-    public void setThumbnailPicture(String thumbnailPicture) {
-        this.thumbnailPicture = thumbnailPicture;
-    }
-
-    public ArticleCategory getCategory() {
-        return category;
-    }
-
-    public void setCategory(ArticleCategory category) {
-        this.category = category;
-    }
-
-    public List<Symptom> getSymptoms() {
-        return symptoms;
-    }
-
-    public void setSymptoms(List<Symptom> symptoms) {
-        this.symptoms = symptoms;
-    }
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 }

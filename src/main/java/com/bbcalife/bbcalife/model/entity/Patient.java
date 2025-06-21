@@ -1,10 +1,7 @@
 package com.bbcalife.bbcalife.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -15,6 +12,8 @@ import java.util.List;
 @Entity
 @Table(name = "patients")
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -112,4 +111,3 @@ public class Patient {
     @OneToMany(mappedBy = "patient")
     private List<Event> events;
 }
-

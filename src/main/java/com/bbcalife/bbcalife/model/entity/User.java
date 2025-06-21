@@ -2,10 +2,7 @@ package com.bbcalife.bbcalife.model.entity;
 
 import com.bbcalife.bbcalife.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -16,6 +13,8 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -66,62 +65,6 @@ public class User implements UserDetails {
 
     private LocalDateTime deletedAt;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getNationalIdNumber() {
-        return nationalIdNumber;
-    }
-
-    public void setNationalIdNumber(String nationalIdNumber) {
-        this.nationalIdNumber = nationalIdNumber;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public boolean isEnabled() {
         return true;
     }
@@ -138,79 +81,9 @@ public class User implements UserDetails {
         }
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     @Override
     public String getUsername() {
         return this.email;
-    }
-
-    public String getProfilePhoto() {
-        return profilePhoto;
-    }
-
-    public void setProfilePhoto(String profilePhoto) {
-        this.profilePhoto = profilePhoto;
-    }
-
-    public String getLang() {
-        return lang;
-    }
-
-    public void setLang(String lang) {
-        this.lang = lang;
-    }
-
-    public LocalDateTime getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(LocalDateTime deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
-    public Boolean getEncrypted() {
-        return encrypted;
-    }
-
-    public void setEncrypted(Boolean encrypted) {
-        this.encrypted = encrypted;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public Assistant getAssistant() {
-        return assistant;
-    }
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public List<Reminder> getUnreadReminders() {
-        return unreadReminders;
-    }
-
-    // Relations
-
-    public void setUnreadReminders(List<Reminder> unreadReminders) {
-        this.unreadReminders = unreadReminders;
     }
 
     // Role check helpers
@@ -220,10 +93,6 @@ public class User implements UserDetails {
 
     public boolean isDoctor() {
         return "doctor".equalsIgnoreCase(role);
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
     }
 
 //    // Password update method example
@@ -240,15 +109,7 @@ public class User implements UserDetails {
         return "assistant".equalsIgnoreCase(role);
     }
 
-    public void setAssistant(Assistant assistant) {
-        this.assistant = assistant;
-    }
-
     public boolean isPatient() {
         return "patient".equalsIgnoreCase(role);
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
     }
 }
