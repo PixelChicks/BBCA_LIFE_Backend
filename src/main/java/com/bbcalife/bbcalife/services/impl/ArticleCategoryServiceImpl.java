@@ -1,9 +1,9 @@
 package com.bbcalife.bbcalife.services.impl;
 
+import com.bbcalife.bbcalife.exceptions.articles.ArticleCategoryNotFoundException;
 import com.bbcalife.bbcalife.model.entity.ArticleCategory;
 import com.bbcalife.bbcalife.repository.ArticleCategoryRepository;
 import com.bbcalife.bbcalife.services.ArticleCategoryService;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class ArticleCategoryServiceImpl implements ArticleCategoryService {
         try {
             category.setId(null);
             return articleCategoryRepository.save(category);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
         return new ArticleCategory();
@@ -34,7 +34,7 @@ public class ArticleCategoryServiceImpl implements ArticleCategoryService {
     @Override
     public ArticleCategory update(Long id, ArticleCategory updatedCategory) {
         ArticleCategory existing = articleCategoryRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Category not found"));
+                .orElseThrow(ArticleCategoryNotFoundException::new);
 
         existing.setCategory(updatedCategory.getCategory());
         return articleCategoryRepository.save(existing);

@@ -2,6 +2,7 @@ package com.bbcalife.bbcalife.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Where;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,9 +33,9 @@ public class Article {
     @Column(name = "sub_category")
     private String subcategory;
 
-    private short calories;
-    private byte hours;
-    private byte minutes;
+    private Short calories;
+    private Byte hours;
+    private Byte minutes;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
