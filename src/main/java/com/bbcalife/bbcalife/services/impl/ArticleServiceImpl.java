@@ -10,6 +10,9 @@ import com.bbcalife.bbcalife.repository.ArticleCategoryRepository;
 import com.bbcalife.bbcalife.repository.ArticleRepository;
 import com.bbcalife.bbcalife.services.ArticleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -44,6 +47,17 @@ public class ArticleServiceImpl implements ArticleService {
                 .map(this::mapToResponse)
                 .toList();
     }
+
+    @Override
+    public List<ArticleResponse> getNewestNotDeleted(int limit) {
+        Pageable pageable = PageRequest.of(0, limit, Sort.by("createdAt").descending());
+        return articleRepository.findByDeletedAtIsNull(pageable)
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
+
 
     @Override
     public ArticleResponse create(ArticleRequest request) {

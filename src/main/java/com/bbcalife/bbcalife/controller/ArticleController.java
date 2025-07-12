@@ -45,6 +45,11 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.getAllNotDeleted());
     }
 
+    @GetMapping("/newest-not-deleted")
+    public List<ArticleResponse> getNewestNotDeleted(@RequestParam(defaultValue = "3") int limit) {
+        return articleService.getNewestNotDeleted(limit);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         articleService.delete(id);

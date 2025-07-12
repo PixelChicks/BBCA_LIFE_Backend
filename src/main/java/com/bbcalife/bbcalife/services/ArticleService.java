@@ -15,4 +15,5 @@ public interface ArticleService {
     List<ArticleResponse> getByCategory(Long categoryId);
     List<ArticleResponse> getByVisibility(String visibility);
     List<ArticleResponse> getByCategoryAndVisibility(Long categoryId, String visibility);
+    List<ArticleResponse> getNewestNotDeleted(int limit);
 }
