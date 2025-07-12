@@ -40,6 +40,11 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.getAll());
     }
 
+    @GetMapping("/allNotDeleted")
+    public ResponseEntity<List<ArticleResponse>> getAllDeletedAtNull() {
+        return ResponseEntity.ok(articleService.getAllNotDeleted());
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         articleService.delete(id);

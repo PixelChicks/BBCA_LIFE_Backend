@@ -19,4 +19,9 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     List<Article> findAllByVisibilityAndDeletedAtIsNull(String visibility);
 
     List<Article> findAllByCategoryIdAndVisibilityAndDeletedAtIsNull(Long categoryId, String visibility);
+
+    List<Article> findAllByOrderByCreatedAtDesc();
+
+    List<Article> findAllByDeletedAtIsNullOrderByCreatedAtDesc();
+
 }

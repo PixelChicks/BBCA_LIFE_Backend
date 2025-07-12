@@ -11,6 +11,7 @@ public interface ArticleService {
     void delete(Long id);
     ArticleResponse getById(Long id);
     List<ArticleResponse> getAll();
+    List<ArticleResponse> getAllNotDeleted();
     List<ArticleResponse> getByCategory(Long categoryId);
     List<ArticleResponse> getByVisibility(String visibility);
     List<ArticleResponse> getByCategoryAndVisibility(Long categoryId, String visibility);

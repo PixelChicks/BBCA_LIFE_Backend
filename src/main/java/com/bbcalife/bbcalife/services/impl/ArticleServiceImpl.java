@@ -31,7 +31,15 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<ArticleResponse> getAll() {
-        return articleRepository.findAllByDeletedAtIsNull()
+        return articleRepository.findAllByOrderByCreatedAtDesc()
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
+    @Override
+    public List<ArticleResponse> getAllNotDeleted() {
+        return articleRepository.findAllByDeletedAtIsNullOrderByCreatedAtDesc()
                 .stream()
                 .map(this::mapToResponse)
                 .toList();
