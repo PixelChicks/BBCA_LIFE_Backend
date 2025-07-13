@@ -2,6 +2,7 @@ package com.bbcalife.bbcalife.controller;
 
 import com.bbcalife.bbcalife.model.dto.request.ArticleRequest;
 import com.bbcalife.bbcalife.model.dto.response.ArticleResponse;
+import com.bbcalife.bbcalife.model.entity.Article;
 import com.bbcalife.bbcalife.services.ArticleService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,15 @@ public class ArticleController {
     public ResponseEntity<List<ArticleResponse>> getAll() {
         return ResponseEntity.ok(articleService.getAll());
     }
+
+    @GetMapping("/filterSearch")
+    public ResponseEntity<List<ArticleResponse>> searchArticlesFilter(
+            @RequestParam(required = false) String search,
+            @RequestParam(required = false) String category
+    ) {
+        return ResponseEntity.ok(articleService.searchArticlesFilter(search, category));
+    }
+
 
     @GetMapping("/allNotDeleted")
     public ResponseEntity<List<ArticleResponse>> getAllDeletedAtNull() {

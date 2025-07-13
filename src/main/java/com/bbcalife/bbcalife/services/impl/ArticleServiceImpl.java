@@ -57,6 +57,13 @@ public class ArticleServiceImpl implements ArticleService {
                 .toList();
     }
 
+    @Override
+    public List<ArticleResponse> searchArticlesFilter(String search, String category) {
+        return articleRepository.searchAndFilter(search, category)
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
 
 
     @Override
