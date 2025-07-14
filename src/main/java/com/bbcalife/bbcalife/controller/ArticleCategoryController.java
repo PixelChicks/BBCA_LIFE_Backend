@@ -17,7 +17,6 @@ public class ArticleCategoryController {
         this.articleCategoryService = articleCategoryService;
     }
 
-
     @GetMapping("/{id}")
     public ResponseEntity<ArticleCategory> getCategoryById(@PathVariable Long id) {
         return articleCategoryService.getById(id)

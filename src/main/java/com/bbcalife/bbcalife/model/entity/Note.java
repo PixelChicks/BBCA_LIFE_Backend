@@ -3,7 +3,7 @@ package com.bbcalife.bbcalife.model.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "note")
+@Table(name = "notes")
 public class Note {
 
     @Id

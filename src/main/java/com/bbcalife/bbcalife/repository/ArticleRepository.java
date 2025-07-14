@@ -34,7 +34,8 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     SELECT a FROM Article a 
     WHERE (:search IS NULL OR LOWER(a.title) LIKE LOWER(CONCAT('%', :search, '%')))
       AND (:category IS NULL OR a.category.category = :category)
-""")
+    ORDER BY a.createdAt DESC
+    """)
     List<Article> searchAndFilter(@Param("search") String search, @Param("category") String category);
 
 }
